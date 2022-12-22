@@ -8,7 +8,19 @@ const scroll = document.querySelector(copyPasteaanoHere);
 let usersDiv = parentDiv.children;
 let index = 0;
 let total = 0;
+const fs = require("fs");
 //copy-paste-2
+
+
+function writeInFile(text) {
+    fs.writeFile('Output.txt', text, (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+    });
+}
+//copy-paste-3
 
 function printEachUsername(index, currentUser) {
     let userName;
@@ -17,9 +29,11 @@ function printEachUsername(index, currentUser) {
     } catch (e) {
         userName = "unknown";
     }
-    console.log(index + ". " + userName);
+    let data = index + ". " + userName;
+    console.log(data);
+    writeInFile(data);
 }
-//copy-paste-3
+//copy-paste-4
 
 function printMyFollowing(startFrom, endAt) {
     if (startFrom) index = startFrom;
@@ -46,4 +60,4 @@ function printMyFollowing(startFrom, endAt) {
         }
     }
 }
-//copy-paste-4
+//copy-paste-5
